@@ -91,6 +91,22 @@ var levels = [
       `
     },
     {
+      selectorName: "Text Selector",
+      helpTitle: "Select elements by their text content",
+      doThis : "Select the plate with the label 'Dessert'",
+      selector : "//plate[text()='Dessert']",
+      syntax: "//A[text()='value']",
+      help : "You can select elements whose text content matches a specific value.",
+      examples : [
+        '<strong>//button[text()="Submit"]</strong> selects all <tag>button</tag> elements with the text <strong>Submit</strong>.'
+      ],
+      boardMarkup: `
+      <plate >Dinner<apple class="small"/></plate>
+      <plate>Dessert<orange class="small"/></plate>
+      <plate>Lunch<pickle class="small"/></plate>
+      `
+    },
+    {
       doThis : "Select the small apples",
       selector : "//*[contains(@class,'small')]",
       selectorName: "Class Selector",
@@ -298,6 +314,24 @@ var levels = [
       `
     },
     {
+      selectorName: "Negation Selector",
+      helpTitle: "Exclude elements using not()",
+      doThis : "Select all apples that are not small",
+      selector : "//apple[not(contains(@class,'small'))]",
+      syntax: "//A[not(condition)]",
+      help : "Use <strong>not()</strong> to exclude elements that match a condition.",
+      examples : [
+        '<strong>//input[not(@disabled)]</strong> selects all enabled input elements.',
+        '<strong>//div[not(@id="main")]</strong> selects all <tag>div</tag> elements except those with id <strong>main</strong>.'
+      ],
+      boardMarkup: `
+      <apple class="small"/>
+      <apple/>
+      <apple class="small"/>
+      <apple/>
+      `
+    },
+    {
       selectorName: "Last selector",
       helpTitle: "Select the last element inside of another element",
       doThis : "Select the big apple and the big orange",
@@ -405,6 +439,24 @@ var levels = [
       <apple for="Ryota"></apple>
       <plate for="Minato"><orange/></plate>
       <pickle class="small"/>
+      `
+    },
+    {
+      selectorName: "Multiple Attribute Selector",
+      helpTitle: "Select elements with multiple attributes",
+      doThis : "Select the plates for Alice that are also fancy",
+      selector : "//plate[@for='Alice'][@id='fancy']",
+      syntax: "//A[@attr1='value1'][@attr2='value2']",
+      help : "You can chain attribute selectors to match elements with multiple attributes.",
+      examples : [
+        '<strong>//input[@type="checkbox"][@checked]</strong> selects all checked checkboxes.',
+        '<strong>//div[@class="foo"][@id="bar"]</strong> selects all <tag>div</tag> elements with class <strong>foo</strong> and id <strong>bar</strong>.'
+      ],
+      boardMarkup: `
+      <plate id="fancy" for="Alice"><pickle/></plate>
+      <plate id="fancy"><pickle/></plate>
+      <plate for="Alice"><pickle/></plate>
+      <plate/>
       `
     },
   ];
