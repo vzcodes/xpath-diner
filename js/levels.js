@@ -196,7 +196,9 @@ var levels = [
       <bento>
         <orange/>
       </bento>
-      <plate id="fancy"/>
+      <plate>
+        <orange class="small" />
+      </plate>
       `
     },
     {
@@ -209,6 +211,30 @@ var levels = [
       examples : [
         '<strong>//p/following-sibling::div</strong> will select every element with <strong>&lt;div&gt;</strong> that directly follows a <tag>p</tag>',
         '<strong>//div//following-sibling::a</strong> will select every <tag>a</tag> element that directly follows a <tag>div</tag>'
+      ],
+      boardMarkup: `
+      <plate id="fancy">
+        <orange class="small"/>
+      </plate>
+      <plate>
+        <pickle/>
+      </plate>
+      <apple class="small"/>
+      <plate>
+        <apple/>
+      </plate>`
+    },
+    {
+      doThis : "Select the plate with the orange",
+      selector : "//plate/orange/parent::plate",
+      helpTitle: "Select an element that directly comes before an element",
+      selectorName: "Parent Selector",
+      syntax : "//A/B/parent::A",
+      help : "This selects the <strong>B</strong> element that is the parent of <strong>A</strong>. Elements that are above are called parents. They're on a higher level, or depth. <br/>",
+      examples : [
+        '<strong>//p/parent::div</strong> will select the element with <strong>&lt;div&gt;</strong> that is a parent of <tag>p</tag>',
+        '<strong>//div//parent::a</strong> will select the <tag>a</tag> element that comes before the <tag>div</tag>',
+        '//div/A/parent::div is the same as //a/parent::div for select versions of browsers'
       ],
       boardMarkup: `
       <plate id="fancy">
